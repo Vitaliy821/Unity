@@ -59,6 +59,7 @@ public class MainMenuController : BaseGameMenuController
     {
         _play.GetComponentInChildren<TMP_Text>().text = "Play";
         _audioManager.Play(UIClipNames.Reset);
+        _lvl = 1;
         _serviceManager.ResetProgress();
       
     }
