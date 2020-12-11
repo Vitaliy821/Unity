@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Interactable",
+    "\\Interactable\\Enemy",
+    "\\Interactable\\Item",
+    "\\Interactable\\NPC"
+  ],
+  "SelectedNode": "\\Interactable\\Enemy\\Hero.cs",
+  "PreviewInSolutionExplorer": false
+}
