@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 
 public class PacmanMove : MonoBehaviour
 {
-
     [SerializeField] float speed = 0.4f;
     [SerializeField] int lives;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] ControlsController controls;
     [SerializeField] LivesController livesController;
+    ServiceManager serviceManager;
     Vector2 dest = Vector2.zero;
 
     public int Score { get; set; }
@@ -21,6 +22,7 @@ public class PacmanMove : MonoBehaviour
     {
         dest = transform.position;
         livesController.SetLivesAmount(lives);
+        serviceManager = ServiceManager.Instance;
     }
 
     // Update is called once per frame
@@ -59,7 +61,9 @@ public class PacmanMove : MonoBehaviour
     public void AddScore()
     {
         Score++;
-        scoreText.text = "Score: " + Score;
+        scoreText.text = "Scores: " + Score;
+        if (Score == 100) //354
+            serviceManager.EndLevel();
     }
 
     public void MinusLive()
@@ -68,6 +72,8 @@ public class PacmanMove : MonoBehaviour
         livesController.SetLivesAmount(lives);
 
         if (lives == 0)
-            Destroy(gameObject);
+        {
+            serviceManager.Restart();
+        }
     }
 }
